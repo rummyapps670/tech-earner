@@ -98,6 +98,13 @@
     .yellow { color: #ffee00; }
     .green { color: #00ff6a; }
     .orange { color: #ff6600; }
+
+    .countdown {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #00ffea;
+    }
   </style>
 </head>
 <body>
@@ -110,7 +117,9 @@
     <img src="tech-earner.png" alt="Tech Earner Logo">
   </div>
 
-  <a href="https://t.me/+bibq_ctn0HdiNTg1" class="btn">🚀 JOIN CHANNEL FAST</a>
+  <a href="https://t.me/+bibq_ctn0HdiNTg1" class="btn" id="joinBtn">🚀 JOIN CHANNEL FAST</a>
+
+  <div class="countdown">Redirecting in <span id="timer">10</span> seconds...</div>
 
   <ul>
     <li><span class="pink">DAILY LIVE PREDICTION</span></li>
@@ -118,6 +127,21 @@
     <li><span class="green">AND LOSS RECOVERY</span></li>
     <li><span class="orange">100% BIG PROFIT</span></li>
   </ul>
+
+  <script>
+    let timeLeft = 10;
+    const timerElement = document.getElementById("timer");
+    const redirectURL = "https://t.me/+bibq_ctn0HdiNTg1";
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        window.location.href = redirectURL;
+      }
+    }, 1000);
+  </script>
 
 </body>
 </html>
