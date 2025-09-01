@@ -17,20 +17,17 @@
       justify-content: center;
       align-items: center;
     }
-
     h1 {
       font-size: 28px;
       color: #00ff88;
       text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
     }
-
     .logo {
       max-width: 200px;
       margin: 20px 0;
       border-radius: 20px;
       box-shadow: 0 0 30px #00ff88;
     }
-
     .btn {
       display: inline-block;
       background: #007bff;
@@ -43,28 +40,23 @@
       transition: all 0.3s ease-in-out;
       box-shadow: 0 0 15px #007bff, 0 0 30px #007bff;
     }
-
     .btn:hover {
       background: #0056b3;
       transform: scale(1.1);
     }
-
     .features {
       text-align: left;
       margin-top: 30px;
       font-size: 18px;
     }
-
     .features li {
       margin: 10px 0;
       list-style: none;
     }
-
     .features li::before {
       content: "✔ ";
       color: #00ff88;
     }
-
     .countdown {
       font-size: 20px;
       margin-top: 20px;
@@ -72,23 +64,26 @@
       text-shadow: 0 0 10px #ff0000;
     }
   </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '828216862896043');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=828216862896043&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '828216862896043');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=828216862896043&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
@@ -110,13 +105,21 @@ src="https://www.facebook.com/tr?id=828216862896043&ev=PageView&noscript=1"
     let timeLeft = 20;
     const timerElement = document.getElementById("timer");
     const redirectURL = "https://t.me/+bibq_ctn0HdiNTg1";
+    const joinBtn = document.getElementById("joinBtn");
 
+    // Track button clicks for Meta Pixel
+    joinBtn.addEventListener("click", function() {
+      fbq('track', 'Lead'); // Custom event for tracking
+    });
+
+    // Countdown redirect
     const countdown = setInterval(() => {
       timeLeft--;
       timerElement.textContent = timeLeft;
 
       if (timeLeft <= 0) {
         clearInterval(countdown);
+        timerElement.textContent = 0;
         window.location.href = redirectURL;
       }
     }, 1000);
